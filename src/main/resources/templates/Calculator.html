@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Calculator Project</title>
+<style>
+    .calc-box{ /* keeping everything in a box */
+        margin: auto;
+        width: 484px;
+        height: 350px;
+        padding: 45px;
+        border: 5px solid #898c91;
+    }
+    .head{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .header-clear{
+    float: right;
+    }
+    .result-box{
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #ffffe0;
+    }
+    .error {
+        color: red;
+    }
+    .o-buttons{
+        display: flex;
+    }
+    .op-name{
+        background-color: #e6e6e6;
+        border: 1px
+        width: 100%;
+    }
+    .btn-group button{
+        cursor: pointer;
+        background-color: #cccccc;
+        display: block;
+        padding: 5px 25px;
+        color: black;
+        border: 1px solid #bfbfbf;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+<div class = "calc-box">
+<div class="header">
+    <a class = "head">Calculator</a>
+</div>
+<div class="result-box">
+    <span th:text="${result}" th:class="${result == 'Invalid Input, Numbers Only' || result == 'Not a Number' || result == 'Invalid Operation' ? 'error' : ''}"></span>
+</div>
+<form th:action="@{/calculate}" method="post">
+    <div class = "o-buttons">
+    <div class="a-and-b">
+        <label>Input A</label><br>
+        <input type="text" name="A" th:value="${A}"/><br>
+        <a class = "op-name">A and B</a>
+        <div class ="btn-group">
+            <button type="submit" name="operation" value="Add">A + B</button>
+            <button type="submit" name="operation" value="Subtraction">A - B</button>
+            <button type="submit" name="operation" value="Multiplication">A * B</button>
+            <button type="submit" name="operation" value="Division">A / B</button>
+            <button type="submit" name="operation" value="Equals">A == B</button>
+            <button type="submit" name="operation" value="Raise to Power">A ^ B</button>
+            <button type="submit" name="operation" value="Logarithm of number">A log B</button>
+            <button type="submit" name="operation" value="Root of number">A root B</button>
+        </div>
+    </div>
+    <div class = "a-only">
+        <label>Input B</label><br>
+        <input type="text" name="B" th:value="${B}"/><br>
+        <a class = "op-name">A only</a>
+        <div class = "btn-group">
+            <button type="submit" name="operation" value="Factorial of number">	A!</button>
+            <button type="submit" name="operation" value="Sine of A">sin A</button>
+            <button type="submit" name="operation" value="Cosine of A">	cos A</button>
+            <button type="submit" name="operation" value="Tangent of A">tan A</button>
+            <button type="submit" name="operation" value="Reciprocal of A">1 / A</button>
+        </div>
+    </div>
+    </div>
+    <div class="header-clear">
+        <button formaction="/clear" formmethod="post">Clear</button>
+    </div>
+</form>
+</div>
+</body>
+</html>
