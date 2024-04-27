@@ -73,6 +73,13 @@ java -jar your-application.jar
 6. After starting the application, you should be able to access it through a web browser or using a tool like curl or Postman to send HTTP requests to the endpoints defined in your Spring controllers
 -- By default, your Spring application will run on port 8080. You can access it in a web browser by navigating to http://localhost:8080
 
+## OR
+You can also use the Maven Spring Boot plugin to directly run your Spring Boot application without explicitly building the JAR file. This command starts the Spring Boot application using the Maven Spring Boot plugin. The plugin automatically detects the main class of your Spring Boot application and launches it.
+
+```
+mvn spring-boot:run
+```
+
 ## How to run the tests
 ### From an IDE
 You just have to run the tests in the IDE.
